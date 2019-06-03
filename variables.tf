@@ -44,7 +44,7 @@ variable "cluster_parameter_group" {
 
 variable "cluster_iam_roles" {
   description = "A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time."
-  type        = "list"
+  type        = "list(string)"
   default     = []
 }
 
@@ -70,7 +70,7 @@ variable "subnets" {
 
 variable "vpc_security_group_ids" {
   description = "A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster."
-  type        = "list"
+  type        = "list(string)"
 }
 
 variable "final_snapshot_identifier" {
