@@ -18,7 +18,7 @@ resource "aws_redshift_cluster" "this" {
 
   port = "${var.cluster_port}"
 
-  vpc_security_group_ids = ["${var.vpc_security_group_ids}"]
+  vpc_security_group_ids = "${var.vpc_security_group_ids}"
 
   cluster_subnet_group_name    = "${local.redshift_subnet_group_name}"
   cluster_parameter_group_name = "${local.parameter_group_name}"
@@ -33,7 +33,7 @@ resource "aws_redshift_cluster" "this" {
   allow_version_upgrade               = "${var.allow_version_upgrade}"
 
   # IAM Roles
-  iam_roles = ["${var.cluster_iam_roles}"]
+  iam_roles = "${var.cluster_iam_roles}"
 
   # Encryption
   encrypted  = "${var.encrypted}"
@@ -91,7 +91,7 @@ resource "aws_redshift_subnet_group" "this" {
 
   name        = "${var.cluster_identifier}"
   description = "Redshift subnet group of ${var.cluster_identifier}"
-  subnet_ids  = ["${var.subnets}"]
+  subnet_ids  = "${var.subnets}"
 
   tags = "${var.tags}"
 }
